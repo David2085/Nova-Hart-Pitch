@@ -325,7 +325,6 @@ body {
 
 <!-- ── WOW OVERLAY ── -->
 <div id="wow">
-<<<<<<< HEAD
   <div id="wowVideo" style="position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;pointer-events:none;">
     <iframe id="ytPlayer" width="100%" height="100%"
       src="https://www.youtube.com/embed/7MD63le9tao?autoplay=1&mute=0&controls=0&loop=1&playlist=7MD63le9tao&rel=0&showinfo=0&modestbranding=1&enablejsapi=1"
@@ -334,9 +333,6 @@ body {
     </iframe>
   </div>
   <div class="wow-inner" style="position:relative;z-index:2;">
-=======
-  <div class="wow-inner">
->>>>>>> 3949d80a8a62a9469fb5d5048ceee54d5a427a04
     <div class="wow-big" id="wowBig">Jouw dag.<br><em>Onze missie.</em></div>
     <div class="wow-close" id="wowClose" onclick="closeWow()">Verder met de pitch &darr;</div>
   </div>
@@ -419,13 +415,9 @@ body {
 <!-- ═══════════════════════════════════════════
   SLIDE 05 — DOELSTELLING + DOELGROEPEN
 ═══════════════════════════════════════════ -->
-<<<<<<< HEAD
 <section class="slide" data-slide="5">
   <div class="bg-photo" style="background-image:url('images/celebration_silhouettes.jpg')"></div>
   <div class="bg-overlay-heavy"></div>
-=======
-<section class="slide slide-dark" data-slide="5">
->>>>>>> 3949d80a8a62a9469fb5d5048ceee54d5a427a04
   <p class="eyebrow reveal d1">Projectresultaat</p>
   <div class="statement reveal d2">
     Een <em>magische</em> bruiloft.<br>Natuur. Ceremonie. Feest.
@@ -442,17 +434,11 @@ body {
 <!-- ═══════════════════════════════════════════
   SLIDE 06 — LOCATIE
 ═══════════════════════════════════════════ -->
-<<<<<<< HEAD
 <section class="slide" data-slide="6" style="justify-content:flex-start; padding-top:80px;">
   <div class="bg-photo" style="background-image:url('images/location_venue.jpg')"></div>
   <div class="bg-overlay-heavy"></div>
   <p class="eyebrow reveal d1" style="margin-bottom:32px; position:relative; z-index:2;">Locatie</p>
   <div class="location-bar reveal d2" style="width:100%; position:relative; z-index:2;">
-=======
-<section class="slide slide-dark" data-slide="6" style="justify-content:flex-start; padding-top:80px;">
-  <p class="eyebrow reveal d1" style="margin-bottom:32px;">Locatie</p>
-  <div class="location-bar reveal d2" style="width:100%;">
->>>>>>> 3949d80a8a62a9469fb5d5048ceee54d5a427a04
     <div class="loc-item">
       <div>
         <span class="loc-tag">Ceremonie & foto</span>
@@ -472,11 +458,7 @@ body {
       </div>
     </div>
   </div>
-<<<<<<< HEAD
   <p class="sub reveal d3" style="margin-top:24px; position:relative; z-index:2;">Ceremonie · diner · feest · 70 overnachtingen · alles op één locatie</p>
-=======
-  <p class="sub reveal d3" style="margin-top:24px;">Ceremonie · diner · feest · 70 overnachtingen · alles op één locatie</p>
->>>>>>> 3949d80a8a62a9469fb5d5048ceee54d5a427a04
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -511,17 +493,11 @@ body {
 <!-- ═══════════════════════════════════════════
   SLIDE 08 — AANPAK + RISICO
 ═══════════════════════════════════════════ -->
-<<<<<<< HEAD
 <section class="slide" data-slide="8">
   <div class="bg-photo" style="background-image:url('images/production_setup.jpg')"></div>
   <div class="bg-overlay-heavy"></div>
   <p class="eyebrow reveal d1" style="position:relative;z-index:2;">Projectactiviteiten</p>
   <div class="grid3 reveal d2" style="margin-top:0; width:100%; position:relative; z-index:2;">
-=======
-<section class="slide slide-green" data-slide="8">
-  <p class="eyebrow reveal d1">Projectactiviteiten</p>
-  <div class="grid3 reveal d2" style="margin-top:0; width:100%;">
->>>>>>> 3949d80a8a62a9469fb5d5048ceee54d5a427a04
     <div class="grid3-item">
       <div class="grid3-num">01</div>
       <div class="grid3-label">Voorbereiding</div>
@@ -538,13 +514,8 @@ body {
       <div class="grid3-sub">Afbouw · afrekening<br>evaluatie Nova</div>
     </div>
   </div>
-<<<<<<< HEAD
   <div class="gold-line reveal d3" style="position:relative;z-index:2;"></div>
   <p class="sub reveal d4" style="position:relative;z-index:2;">Risicoscore <span style="color:#C6A75E;">42%</span> &nbsp;·&nbsp; uitvoerbaar &nbsp;·&nbsp; back-up tent aanwezig &nbsp;·&nbsp; buffer €12.648</p>
-=======
-  <div class="gold-line reveal d3"></div>
-  <p class="sub reveal d4">Risicoscore <span style="color:#C6A75E;">42%</span> &nbsp;·&nbsp; uitvoerbaar &nbsp;·&nbsp; back-up tent aanwezig &nbsp;·&nbsp; buffer €12.648</p>
->>>>>>> 3949d80a8a62a9469fb5d5048ceee54d5a427a04
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -651,7 +622,6 @@ document.addEventListener('keydown', e => {
 function triggerWow() {
   const w = document.getElementById('wow');
   w.classList.add('on');
-<<<<<<< HEAD
   // Fade in video
   setTimeout(() => {
     document.getElementById('wowVideo').style.opacity = '0.35';
@@ -659,10 +629,6 @@ function triggerWow() {
   }, 300);
   setTimeout(() => document.getElementById('wowBig').classList.add('in'), 400);
   setTimeout(() => document.getElementById('wowClose').classList.add('in'), 1100);
-=======
-  setTimeout(() => document.getElementById('wowBig').classList.add('in'), 200);
-  setTimeout(() => document.getElementById('wowClose').classList.add('in'), 900);
->>>>>>> 3949d80a8a62a9469fb5d5048ceee54d5a427a04
   confetti();
 }
 function closeWow() {
