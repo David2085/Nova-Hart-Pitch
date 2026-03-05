@@ -633,13 +633,19 @@
       Scroll
     </div>
   </div>
-  <div class="s1-right" style="position:relative; overflow:hidden;">
-    <!-- Kissing couple video as hero atmosphere -->
-    <iframe src="https://www.youtube.com/embed/2skcmLkXb-0?autoplay=1&mute=1&loop=1&playlist=2skcmLkXb-0&controls=0&modestbranding=1&rel=0&playsinline=1"
-      style="position:absolute;inset:0;width:100%;height:100%;border:none;object-fit:cover;transform:scale(1.05);"
+  <div class="s1-right" style="position:relative; overflow:hidden; background:#1E3D2F;">
+    <!-- Kissing couple video — oversized to crop out black bars -->
+    <iframe src="https://www.youtube.com/embed/2skcmLkXb-0?autoplay=1&mute=1&loop=1&playlist=2skcmLkXb-0&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1"
+      style="position:absolute;
+             top:50%; left:50%;
+             width:300%;
+             height:300%;
+             transform:translate(-50%,-50%);
+             border:none;
+             pointer-events:none;"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; muted"
       allowfullscreen title="Nova & Finn"></iframe>
-    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(30,61,47,0.4) 0%, transparent 30%); pointer-events:none;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(30,61,47,0.45) 0%, transparent 35%); pointer-events:none;"></div>
   </div>
   <div class="ghost-num" style="color:var(--ivory);">01</div>
 </section>
@@ -739,9 +745,9 @@
       <div class="kernboodschap fu">
         "Dit is geen standaardbruiloft, maar een evenement met grote impact."
       </div>
-      <div class="fu" style="margin-top:2rem; border-radius:4px; overflow:hidden; position:relative; width:100%; aspect-ratio:16/9;">
-        <iframe src="https://www.youtube.com/embed/NCDcst6Cyxc?autoplay=1&mute=1&loop=1&playlist=NCDcst6Cyxc&controls=0&modestbranding=1&rel=0&playsinline=1"
-          style="width:100%;height:100%;border:none;display:block;"
+      <div class="fu" style="margin-top:2rem; border-radius:4px; overflow:hidden; position:relative; width:100%; aspect-ratio:16/9; background:#1E3D2F;">
+        <iframe src="https://www.youtube.com/embed/NCDcst6Cyxc?autoplay=1&mute=1&loop=1&playlist=NCDcst6Cyxc&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1"
+          style="position:absolute; top:50%; left:50%; width:300%; height:300%; transform:translate(-50%,-50%); border:none; pointer-events:none;"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; muted"
           allowfullscreen title="Lege ceremonie sfeer"></iframe>
       </div>
