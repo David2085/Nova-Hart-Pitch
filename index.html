@@ -1240,10 +1240,10 @@
   <div class="s16-left">
     <div class="s16-bg"></div>
     <span class="label label--gold-light fu">Verrassingselement</span>
-    <h2 class="heading-lg fu" style="color:var(--ivory);">Dit is hoe jouw content er uit <br><em style="color:var(--peach);">zou komen te zien</em></h2>
+    <h2 class="heading-lg fu" style="color:var(--ivory);">De verrassing<br><em style="color:var(--peach);">voor Finn</em></h2>
     <div class="divider divider--light fu"></div>
     <p class="body--light fu" style="max-width:360px; margin-bottom:1.5rem;">
-      Op deze plek wordt een TikTok afgespeeld — een uniek element dat perfect past bij de opdrachtgever.
+      Op deze plek wordt een TikTok afgespeeld als verrassingselement voor Finn — een uniek element dat perfect past bij de opdrachtgever.
     </p>
     <div class="fu" style="margin-top:1rem; padding:1.5rem; border:1px solid rgba(201,168,76,0.2); background:rgba(255,255,255,0.04); border-radius:2px;">
       <p class="body--light" style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; line-height:1.6;">
@@ -1256,14 +1256,74 @@
   <!-- TikTok phone -->
   <div class="s16-right">
     <div class="s16-bg"></div>
-    <div class="tiktok-phone">
-      <div class="tiktok-screen">
-        <div style="font-size:2.5rem; opacity:0.25; margin-bottom:1rem;">▶</div>
-        <div class="tt-label">
-          TikTok volgt<br>nog
-          <span>Verrassingsvideo wordt<br>later toegevoegd</span>
-        </div>
+    <div class="tiktok-phone" style="overflow:hidden; background:#000; position:relative;" id="tt-phone">
+      <iframe id="tt-iframe"
+        src="https://www.youtube.com/embed/vhEww5m1ifQ?autoplay=1&mute=1&loop=1&playlist=vhEww5m1ifQ&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&enablejsapi=1"
+        style="position:absolute; top:50%; left:50%; width:300%; height:300%; transform:translate(-50%,-42%); border:none; pointer-events:none;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; muted"
+        allowfullscreen title="Verrassingselement Nova & Finn"></iframe>
+
+      <!-- Play with sound overlay -->
+      <div id="tt-overlay" onclick="playWithSound()" style="
+        position:absolute; inset:0; z-index:10;
+        display:flex; flex-direction:column;
+        align-items:center; justify-content:center;
+        cursor:pointer;
+        background: linear-gradient(to top, rgba(30,61,47,0.7) 0%, transparent 60%);
+        transition: opacity 0.4s ease;
+      ">
+        <div style="
+          width:64px; height:64px; border-radius:50%;
+          background: var(--gold);
+          display:flex; align-items:center; justify-content:center;
+          font-size:1.6rem;
+          box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+          margin-bottom:0.8rem;
+          transition: transform 0.2s ease;
+        " onmouseenter="this.style.transform='scale(1.1)'" onmouseleave="this.style.transform='scale(1)'">▶</div>
+        <span style="
+          font-family:'Jost',sans-serif;
+          font-size:0.65rem; letter-spacing:0.18em;
+          text-transform:uppercase; color:var(--ivory);
+          font-weight:600;
+        ">Tik voor geluid</span>
       </div>
+    </div>
+  </div>
+
+  <script>
+    function playWithSound() {
+      const overlay = document.getElementById('tt-overlay');
+      const iframe = document.getElementById('tt-iframe');
+      // Reload iframe without mute=1 so sound plays after user gesture
+      const src = iframe.src.replace('mute=1', 'mute=0').replace('autoplay=1', 'autoplay=1');
+      iframe.src = src;
+      iframe.style.pointerEvents = 'auto';
+      overlay.style.opacity = '0';
+      setTimeout(() => overlay.style.display = 'none', 400);
+    }
+  </script>
+</section>
+
+<!-- ═══════════════════════════════════════
+     DIA 17 – VRAAG AAN DE KLAS
+═══════════════════════════════════════ -->
+<section class="slide slide--light" id="s17">
+  <div class="ghost-num">17</div>
+  <span class="label label--gold fu" style="text-align:center; display:block;">Interactief moment — Vraag aan de klas</span>
+
+  <div class="vraag-box fu">
+    <div class="vraag-q-icon">?</div>
+    <div class="vraag-text">
+      "Hoe zouden jullie de veiligheid waarborgen, zodat niet iedereen van buitenaf binnen kan komen?"
+    </div>
+    <div class="chips">
+      <button class="chip" onclick="this.classList.toggle('active')">Accreditatiesysteem</button>
+      <button class="chip" onclick="this.classList.toggle('active')">Wristbands &amp; zones</button>
+      <button class="chip" onclick="this.classList.toggle('active')">Hekwerk &amp; bewaking</button>
+      <button class="chip" onclick="this.classList.toggle('active')">Geheime locatie</button>
+      <button class="chip" onclick="this.classList.toggle('active')">QR-code toegang</button>
+      <button class="chip" onclick="this.classList.toggle('active')">Eigen idee!</button>
     </div>
   </div>
 </section>
