@@ -3,956 +3,656 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NextLevel Events — Pitch Nova & Finn</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<title>NextLevel Events — Nova & Finn</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ivory: #F7F3EF;
-  --forest: #1F2A24;
-  --coral: #E76F51;
-  --peach: #F4A261;
-  --dahlia: #D1495B;
-  --blush: #F2C6C2;
-  --gold: #C6A75E;
-  --gold-light: #DFC27E;
-  --charcoal: #2B2B2B;
-}
-
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--forest);
-  color: var(--ivory);
+  background: #0e1610;
+  color: #F7F3EF;
   font-family: 'Jost', sans-serif;
   font-weight: 300;
   overflow-x: hidden;
-  cursor: default;
 }
 
-/* ── PROGRESS BAR ── */
+/* ── SLIDES ── */
+.slide {
+  height: 100vh; width: 100vw;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  flex-direction: column;
+}
+
+/* ── PROGRESS ── */
 #progress {
-  position: fixed; top:0; left:0; height:3px;
-  background: linear-gradient(90deg, var(--coral), var(--gold));
-  z-index: 999; width: 0%;
-  transition: width 0.2s ease;
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, #E76F51, #C6A75E);
+  z-index: 999; width: 0%; transition: width 0.15s ease;
 }
 
 /* ── NAV DOTS ── */
-#nav-dots {
-  position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
-  z-index: 100; display: flex; flex-direction: column; gap: 10px;
+#nav {
+  position: fixed; right: 24px; top: 50%;
+  transform: translateY(-50%);
+  z-index: 100; display: flex; flex-direction: column; gap: 8px;
 }
 .dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: rgba(247,243,239,0.25);
-  cursor: pointer; transition: all 0.3s ease;
-  border: 1px solid rgba(198,167,94,0.4);
-}
-.dot.active {
-  background: var(--gold);
-  transform: scale(1.4);
-}
-.dot:hover { background: var(--coral); transform: scale(1.3); }
-
-/* ── SECTIONS ── */
-.slide {
-  min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-  padding: 80px 60px;
-}
-
-/* ── HERO ── */
-#hero {
-  background: url('images/forest_ceremony.jpg') center/cover no-repeat;
-  text-align: center;
-}
-#hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(160deg, rgba(10,18,14,0.72) 0%, rgba(31,42,36,0.6) 50%, rgba(10,18,14,0.8) 100%);
-}
-.hero-inner { position: relative; z-index: 2; max-width: 900px; }
-.hero-eyebrow {
-  font-size: 0.65rem; letter-spacing: 0.5em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 32px;
-  animation: fadeUp 1s 0.2s both;
-}
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.5rem, 9vw, 8rem);
-  font-weight: 300; line-height: 1;
-  color: var(--ivory);
-  animation: fadeUp 1s 0.4s both;
-}
-.hero-title em { color: var(--gold-light); font-style: italic; }
-.hero-sub {
-  margin-top: 24px; font-size: 1rem; letter-spacing: 0.2em;
-  color: rgba(247,243,239,0.7);
-  animation: fadeUp 1s 0.6s both;
-}
-.hero-divider {
-  width: 60px; height: 1px; background: var(--gold);
-  margin: 32px auto;
-  animation: fadeUp 1s 0.7s both;
-}
-.hero-scroll {
-  margin-top: 48px;
-  animation: fadeUp 1s 0.9s both;
-}
-.scroll-btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
-  color: var(--gold); text-decoration: none;
-  border: 1px solid rgba(198,167,94,0.4);
-  padding: 14px 28px; border-radius: 2px;
-  transition: all 0.3s ease;
-}
-.scroll-btn:hover { background: rgba(198,167,94,0.1); border-color: var(--gold); }
-
-/* ── SECTION STYLES ── */
-.slide-light { background: var(--ivory); color: var(--charcoal); }
-.slide-mid { background: #F0EAE3; color: var(--charcoal); }
-.slide-dark { background: var(--forest); color: var(--ivory); }
-.slide-photo { position: relative; }
-
-.section-label {
-  font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 16px;
-}
-.slide-light .section-label, .slide-mid .section-label { color: var(--coral); }
-
-.section-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(5rem, 12vw, 9rem);
-  font-weight: 300; line-height: 1;
-  color: rgba(198,167,94,0.12);
-  position: absolute; top: 40px; right: 60px;
-  pointer-events: none;
-}
-.slide-light .section-num, .slide-mid .section-num {
-  color: rgba(31,42,36,0.07);
-}
-
-.slide-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 300; line-height: 1.1;
-  margin-bottom: 32px;
-}
-.slide-title em { color: var(--coral); font-style: italic; }
-.slide-dark .slide-title em { color: var(--gold-light); }
-
-.content-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 60px; align-items: start;
-  max-width: 1200px; width: 100%;
-}
-.content-grid-3 {
-  display: grid; grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px; max-width: 1200px; width: 100%;
-}
-.content-single { max-width: 900px; width: 100%; }
-
-/* ── CARDS ── */
-.card {
-  padding: 32px;
-  border: 1px solid rgba(198,167,94,0.2);
-  border-radius: 4px;
-  position: relative;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-.card:hover { transform: translateY(-4px); border-color: var(--gold); }
-.slide-light .card, .slide-mid .card {
-  background: white;
-  border-color: rgba(31,42,36,0.1);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-}
-.slide-light .card:hover, .slide-mid .card:hover {
-  border-color: var(--coral);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-}
-.card-icon {
-  font-size: 1.8rem; margin-bottom: 16px;
-}
-.card-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem; font-weight: 400;
-  margin-bottom: 12px; color: var(--forest);
-}
-.slide-dark .card-title { color: var(--ivory); }
-.card-body {
-  font-size: 0.9rem; line-height: 1.8;
-  color: rgba(43,43,43,0.7);
-}
-.slide-dark .card-body { color: rgba(247,243,239,0.65); }
-
-.placeholder-text {
-  font-size: 0.85rem; font-style: italic;
-  color: rgba(198,167,94,0.5);
-  border: 1px dashed rgba(198,167,94,0.3);
-  padding: 16px 20px; border-radius: 3px;
-  margin-top: 12px;
-}
-.slide-light .placeholder-text, .slide-mid .placeholder-text {
-  color: rgba(231,111,81,0.4);
-  border-color: rgba(231,111,81,0.25);
-}
-
-/* ── PHOTO SPLIT ── */
-.photo-col {
-  position: relative; border-radius: 4px; overflow: hidden;
-}
-.photo-col img {
-  width: 100%; height: 100%; object-fit: cover;
-  display: block;
-  min-height: 400px;
-}
-.photo-accent {
-  position: absolute; bottom: -16px; left: -16px;
-  width: 80px; height: 80px;
-  border: 1px solid var(--gold);
-  border-radius: 2px; opacity: 0.4;
-  pointer-events: none;
-}
-
-/* ── BLOK HEADER ── */
-.blok-header {
-  text-align: center; width: 100%; margin-bottom: 60px;
-}
-.blok-number {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(5rem, 15vw, 12rem);
-  font-weight: 300; line-height: 1;
-  color: rgba(198,167,94,0.15);
-  display: block;
-}
-.blok-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 300; margin-top: -24px;
-  position: relative; z-index: 1;
-}
-
-/* ── LIST ITEMS ── */
-.check-list { list-style: none; margin-top: 16px; }
-.check-list li {
-  display: flex; align-items: flex-start; gap: 12px;
-  font-size: 0.9rem; line-height: 1.7;
-  margin-bottom: 10px;
-  color: rgba(43,43,43,0.75);
-}
-.check-list li::before {
-  content: '✦';
-  color: var(--gold); font-size: 0.6rem;
-  margin-top: 5px; flex-shrink: 0;
-}
-.slide-dark .check-list li { color: rgba(247,243,239,0.7); }
-
-/* ── BUDGET HIGHLIGHT ── */
-.budget-highlight {
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(198,167,94,0.08);
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(247,243,239,0.2);
+  cursor: pointer; transition: all 0.3s;
   border: 1px solid rgba(198,167,94,0.3);
-  border-radius: 4px; padding: 20px 28px;
-  margin-top: 20px;
 }
-.budget-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem; color: var(--gold);
-}
-.budget-label { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.6; }
-.flag-red {
-  background: rgba(209,73,91,0.1);
-  border-color: rgba(209,73,91,0.3);
-}
-.flag-red .budget-num { color: var(--dahlia); }
+.dot.active { background: #C6A75E; transform: scale(1.5); }
+.dot:hover { background: #E76F51; }
 
-/* ── TEAM CARDS ── */
-.team-card {
-  text-align: center; padding: 32px 20px;
+/* ── SLIDE BACKGROUNDS ── */
+.bg-photo {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
 }
-.team-avatar {
-  width: 80px; height: 80px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--coral), var(--dahlia));
-  margin: 0 auto 16px;
-  display: flex; align-items: center; justify-content: center;
+.bg-overlay {
+  position: absolute; inset: 0;
+  background: rgba(10, 20, 12, 0.72);
+}
+.bg-overlay-heavy {
+  position: absolute; inset: 0;
+  background: rgba(10, 20, 12, 0.88);
+}
+.slide-dark { background: #0e1610; }
+.slide-green { background: #1F2A24; }
+
+/* ── TYPOGRAPHY ── */
+.eyebrow {
+  font-size: 0.6rem; letter-spacing: 0.55em;
+  text-transform: uppercase; color: #C6A75E;
+  margin-bottom: 24px;
+}
+.hero-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.8rem; color: white;
-  border: 2px solid rgba(198,167,94,0.3);
+  font-size: clamp(5rem, 14vw, 11rem);
+  font-weight: 300; line-height: 0.9;
+  color: #F7F3EF; text-align: center;
 }
-.team-name {
+.hero-name em { color: #C6A75E; font-style: italic; }
+
+.statement {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem; margin-bottom: 6px;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  font-weight: 300; line-height: 1.1;
+  text-align: center; color: #F7F3EF;
+  max-width: 900px;
 }
-.team-role {
-  font-size: 0.7rem; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--gold);
+.statement em { color: #C6A75E; font-style: italic; }
+.statement strong { color: #E76F51; font-weight: 400; }
+
+.sub {
+  font-size: 0.8rem; letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(247,243,239,0.45);
+  margin-top: 28px; text-align: center;
 }
 
-/* ── CLOSING SLIDE ── */
-#closing {
-  background: url('images/ceremony_lights.jpg') center/cover no-repeat;
+.gold-line {
+  width: 48px; height: 1px;
+  background: #C6A75E;
+  margin: 28px auto;
+}
+
+/* ── NUMBER STAT ── */
+.stat-wrap {
+  display: flex; gap: 80px; align-items: flex-end;
+  justify-content: center; flex-wrap: wrap;
+}
+.stat {
   text-align: center;
 }
-#closing::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: rgba(10,18,14,0.78);
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 300; line-height: 1;
+  color: #C6A75E;
 }
+.stat-num.coral { color: #E76F51; }
+.stat-label {
+  font-size: 0.65rem; letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(247,243,239,0.4);
+  margin-top: 8px;
+}
+
+/* ── SPLIT ── */
+.split {
+  display: grid; grid-template-columns: 1fr 1fr;
+  width: 100%; height: 100%;
+}
+.split-photo {
+  background-size: cover; background-position: center;
+  position: relative;
+}
+.split-content {
+  display: flex; flex-direction: column;
+  justify-content: center; padding: 80px 60px;
+  background: #1F2A24;
+}
+.split-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300; line-height: 1.1;
+  margin-bottom: 32px; color: #F7F3EF;
+}
+.split-title em { color: #E76F51; font-style: italic; }
+
+.item {
+  display: flex; align-items: flex-start; gap: 16px;
+  margin-bottom: 20px;
+}
+.item-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: #C6A75E; flex-shrink: 0; margin-top: 8px;
+}
+.item-text {
+  font-size: 1rem; line-height: 1.6;
+  color: rgba(247,243,239,0.75);
+}
+.item-text strong { color: #F7F3EF; font-weight: 400; }
+
+/* ── GRID 3 ── */
+.grid3 {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px; width: 100%; background: rgba(198,167,94,0.1);
+  position: relative; z-index: 2;
+}
+.grid3-item {
+  background: #1F2A24;
+  padding: 52px 40px;
+  text-align: center;
+  transition: background 0.3s;
+}
+.grid3-item:hover { background: #263322; }
+.grid3-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300; color: #C6A75E; line-height: 1;
+}
+.grid3-label {
+  font-size: 0.65rem; letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(247,243,239,0.4);
+  margin-top: 10px;
+}
+.grid3-sub {
+  font-size: 0.85rem; color: rgba(247,243,239,0.6);
+  margin-top: 12px; line-height: 1.6;
+}
+
+/* ── LOCATIE ── */
+.location-bar {
+  display: flex; gap: 2px; width: 100%;
+  position: relative; z-index: 2; flex: 1;
+}
+.loc-item {
+  flex: 1; position: relative; overflow: hidden;
+  background: #1a2420;
+  display: flex; align-items: flex-end;
+  padding: 32px 28px; cursor: default;
+  transition: flex 0.5s cubic-bezier(0.16,1,0.3,1);
+  min-height: 340px;
+}
+.loc-item:hover { flex: 2; }
+.loc-item.featured { flex: 1.5; background: #1F2A24; border-top: 2px solid #C6A75E; }
+.loc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 300;
+  color: #F7F3EF;
+}
+.loc-tag {
+  font-size: 0.6rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: #C6A75E;
+  margin-bottom: 8px; display: block;
+}
+
+/* ── BUDGET SLIDE ── */
+.budget-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 0; border-bottom: 1px solid rgba(198,167,94,0.12);
+  max-width: 700px; width: 100%;
+}
+.budget-row:last-child { border-bottom: none; }
+.budget-cat {
+  font-size: 0.75rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: rgba(247,243,239,0.45);
+}
+.budget-amt {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 300; color: #F7F3EF;
+}
+.budget-amt.gold { color: #C6A75E; }
+.budget-amt.green { color: #6fcf97; }
+.budget-amt.coral { color: #E76F51; }
+
+/* ── USP ROW ── */
+.usp-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px; max-width: 1100px;
+  position: relative; z-index: 2;
+}
+.usp-item { text-align: center; }
+.usp-icon {
+  font-size: 2rem; margin-bottom: 20px; display: block;
+}
+.usp-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 300;
+  color: #F7F3EF; margin-bottom: 12px;
+}
+.usp-body {
+  font-size: 0.85rem; line-height: 1.7;
+  color: rgba(247,243,239,0.5);
+}
+
+/* ── CLOSING ── */
+.closing-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300; line-height: 1;
+  color: #F7F3EF; text-align: center;
+  position: relative; z-index: 2;
+}
+.closing-text em { color: #C6A75E; font-style: italic; }
 
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(32px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .reveal {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
+              transform 0.9s cubic-bezier(0.16,1,0.3,1);
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.25s; }
+.d3 { transition-delay: 0.4s; }
+.d4 { transition-delay: 0.55s; }
 
-/* ── GOLD LINE DIVIDER ── */
-.gold-line {
-  width: 60px; height: 1px; background: var(--gold);
-  margin: 24px 0;
+/* ── WOW OVERLAY ── */
+#wow {
+  position: fixed; inset: 0; z-index: 500;
+  background: #0e1610;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
 }
-.gold-line.center { margin: 24px auto; }
-
-/* ── OVERTUIGING BANNER ── */
-.conviction-banner {
-  background: linear-gradient(135deg, var(--coral), var(--dahlia));
-  padding: 48px 60px; border-radius: 4px;
-  text-align: center; max-width: 1100px;
-  position: relative; overflow: hidden;
-}
-.conviction-banner::before {
-  content: '✦';
-  position: absolute; font-size: 20rem;
-  color: rgba(255,255,255,0.04);
-  top: -60px; right: -40px;
-  font-family: serif;
-}
-.conviction-quote {
+#wow.on { opacity: 1; pointer-events: all; }
+.wow-inner { text-align: center; }
+.wow-big {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 300; font-style: italic;
-  color: white; line-height: 1.3;
-  margin-bottom: 20px;
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 300; color: #F7F3EF;
+  opacity: 0; transform: scale(0.92);
+  transition: all 0.7s cubic-bezier(0.16,1,0.3,1);
 }
-.conviction-sub {
-  font-size: 0.8rem; letter-spacing: 0.3em;
-  text-transform: uppercase; color: rgba(255,255,255,0.7);
+.wow-big em { color: #C6A75E; font-style: italic; }
+.wow-big.in { opacity: 1; transform: scale(1); }
+.wow-close {
+  margin-top: 48px; font-size: 0.6rem;
+  letter-spacing: 0.5em; text-transform: uppercase;
+  color: rgba(247,243,239,0.3); cursor: pointer;
+  border: 1px solid rgba(198,167,94,0.2);
+  padding: 12px 28px; display: inline-block;
+  transition: all 0.3s;
+  opacity: 0; animation: none;
+}
+.wow-close.in { opacity: 1; }
+.wow-close:hover { color: #C6A75E; border-color: #C6A75E; }
+
+/* confetti */
+.cp {
+  position: fixed; border-radius: 2px; top: -10px;
+  animation: fall linear forwards; pointer-events: none; z-index: 502;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
 }
 </style>
 </head>
 <body>
 
 <div id="progress"></div>
+<nav id="nav"></nav>
 
-<nav id="nav-dots">
-  <div class="dot active" onclick="scrollToSlide(0)" title="Intro"></div>
-  <div class="dot" onclick="scrollToSlide(1)" title="Achtergronden"></div>
-  <div class="dot" onclick="scrollToSlide(2)" title="Opdrachtgever"></div>
-  <div class="dot" onclick="scrollToSlide(3)" title="Opdrachtnemer"></div>
-  <div class="dot" onclick="scrollToSlide(4)" title="Aanleiding & Opdracht"></div>
-  <div class="dot" onclick="scrollToSlide(5)" title="Stakeholders"></div>
-  <div class="dot" onclick="scrollToSlide(6)" title="Projectresultaat"></div>
-  <div class="dot" onclick="scrollToSlide(7)" title="Doelgroep"></div>
-  <div class="dot" onclick="scrollToSlide(8)" title="Locaties"></div>
-  <div class="dot" onclick="scrollToSlide(9)" title="Mensen & Middelen"></div>
-  <div class="dot" onclick="scrollToSlide(10)" title="Budget"></div>
-  <div class="dot" onclick="scrollToSlide(11)" title="Projectactiviteiten"></div>
-  <div class="dot" onclick="scrollToSlide(12)" title="Risico's & Activiteiten"></div>
-  <div class="dot" onclick="scrollToSlide(13)" title="Planning"></div>
-  <div class="dot" onclick="scrollToSlide(14)" title="Waarom NextLevel"></div>
-  <div class="dot" onclick="scrollToSlide(15)" title="Afsluiting"></div>
-</nav>
+<!-- ── WOW OVERLAY ── -->
+<div id="wow">
+  <div id="wowVideo" style="position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;pointer-events:none;">
+    <iframe id="ytPlayer" width="100%" height="100%"
+      src="https://www.youtube.com/embed/7MD63le9tao?autoplay=1&mute=0&controls=0&loop=1&playlist=7MD63le9tao&rel=0&showinfo=0&modestbranding=1&enablejsapi=1"
+      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+      style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+    </iframe>
+  </div>
+  <div class="wow-inner" style="position:relative;z-index:2;">
+    <div class="wow-big" id="wowBig">Jouw dag.<br><em>Onze missie.</em></div>
+    <div class="wow-close" id="wowClose" onclick="closeWow()">Verder met de pitch &darr;</div>
+  </div>
+</div>
 
-<!-- ══ SLIDE 0: HERO ══ -->
-<section class="slide" id="hero" data-slide="0">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">Pitch Projectvoorstel · NextLevel Events</p>
-    <h1 class="hero-title">Nova <em>&</em> Finn</h1>
-    <p class="hero-sub">14 Juni 2026 · Een bruiloft in de natuur</p>
-    <div class="hero-divider"></div>
-    <div class="hero-scroll">
-      <a href="#blok1" class="scroll-btn">Begin de pitch ↓</a>
+<!-- ═══════════════════════════════════════════
+  SLIDE 00 — HERO
+═══════════════════════════════════════════ -->
+<section class="slide" data-slide="0" style="cursor:pointer;" onclick="triggerWow()">
+  <div class="bg-photo" style="background-image:url('images/forest_ceremony.jpg')"></div>
+  <div class="bg-overlay"></div>
+  <p class="eyebrow reveal d1" style="position:relative;z-index:2;">NextLevel Events &nbsp;·&nbsp; Pitch Projectvoorstel</p>
+  <h1 class="hero-name reveal d2" style="position:relative;z-index:2;">Nova <em>&</em> Finn</h1>
+  <p class="sub reveal d3" style="position:relative;z-index:2;">14 Juni 2026 &nbsp;·&nbsp; Klik voor het wow-moment</p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  SLIDE 01 — HET PROBLEEM
+═══════════════════════════════════════════ -->
+<section class="slide slide-dark" data-slide="1">
+  <p class="eyebrow reveal d1">Het probleem</p>
+  <div class="statement reveal d2">
+    Één kans.<br><em>Miljoenen kijkers.</em><br><strong>Geen ruimte voor fouten.</strong>
+  </div>
+  <div class="gold-line reveal d3"></div>
+  <div class="stat-wrap reveal d4">
+    <div class="stat"><div class="stat-num coral">800+</div><div class="stat-label">Gasten</div></div>
+    <div class="stat"><div class="stat-num">€150k</div><div class="stat-label">Budget</div></div>
+    <div class="stat"><div class="stat-num coral">1×</div><div class="stat-label">Kans</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  SLIDE 02 — DE OPLOSSING / WIE ZIJN WIJ
+═══════════════════════════════════════════ -->
+<section class="slide" data-slide="2" style="padding:0;">
+  <div class="split" style="height:100vh;">
+    <div class="split-photo" style="background-image:url('images/dinner_table.jpg')"></div>
+    <div class="split-content">
+      <p class="eyebrow reveal d1">De oplossing</p>
+      <h2 class="split-title reveal d2">Next<em>Level</em><br>Events</h2>
+      <div class="item reveal d2"><div class="item-dot"></div><div class="item-text">Innovatief eventbureau · Nijmegen</div></div>
+      <div class="item reveal d3"><div class="item-dot"></div><div class="item-text">Gedreven studententeam</div></div>
+      <div class="item reveal d3"><div class="item-dot"></div><div class="item-text"><strong>Missie:</strong> jouw visie, onze uitvoering</div></div>
+      <div class="item reveal d4"><div class="item-dot"></div><div class="item-text"><strong>Visie:</strong> hét student-gedreven bureau van NL</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ SLIDE 1: BLOK 1 OPENER ══ -->
-<section class="slide slide-dark" id="blok1" data-slide="1" style="text-align:center; flex-direction:column;">
-  <div class="blok-header reveal">
-    <span class="blok-number">01</span>
-    <h2 class="blok-title">Achter<em style="color:var(--gold-light); font-style:italic;">gronden</em></h2>
-    <div class="gold-line center"></div>
-    <p style="font-size:0.75rem; letter-spacing:0.4em; text-transform:uppercase; color:rgba(247,243,239,0.5);">Wie zijn wij · Wie is Nova · Wat is de opdracht</p>
-  </div>
-  <div class="content-grid-3 reveal reveal-delay-2" style="margin-top:20px;">
-    <div class="card" style="text-align:center;">
-      <div class="card-icon">👤</div>
-      <div class="card-title">Opdrachtgever</div>
-      <div class="card-body">Nova Hart — TikTok-influencer</div>
+<!-- ═══════════════════════════════════════════
+  SLIDE 03 — NOVA & FINN
+═══════════════════════════════════════════ -->
+<section class="slide" data-slide="3" style="padding:0;">
+  <div class="split" style="height:100vh;">
+    <div class="split-content" style="background:#0e1610;">
+      <p class="eyebrow reveal d1">De opdrachtgever</p>
+      <h2 class="split-title reveal d2">Nova <em>Hart</em><br>& Finn Rivers</h2>
+      <div class="item reveal d2"><div class="item-dot"></div><div class="item-text">TikTok-influencer · miljoenen volgers</div></div>
+      <div class="item reveal d3"><div class="item-dot"></div><div class="item-text">Beleving & magie zijn prioriteit</div></div>
+      <div class="item reveal d3"><div class="item-dot"></div><div class="item-text">Contentwaarde · veiligheid · originaliteit</div></div>
+      <div class="item reveal d4"><div class="item-dot"></div><div class="item-text">Finn houdt van <strong>F1 · auto's · country</strong></div></div>
     </div>
-    <div class="card" style="text-align:center;">
-      <div class="card-icon">🏢</div>
-      <div class="card-title">Opdrachtnemer</div>
-      <div class="card-body">NextLevel Events</div>
-    </div>
-    <div class="card" style="text-align:center;">
-      <div class="card-icon">📋</div>
-      <div class="card-title">Stakeholders</div>
-      <div class="card-body">Inventarisatie van alle betrokkenen</div>
-    </div>
+    <div class="split-photo" style="background-image:url('images/couple_closeup.jpg')"></div>
   </div>
 </section>
 
-<!-- ══ SLIDE 2: OPDRACHTGEVER ══ -->
-<section class="slide slide-light" id="opdrachtgever" data-slide="2">
-  <span class="section-num">1.1</span>
-  <div class="content-grid reveal">
-    <div>
-      <p class="section-label">Blok 1 · Achtergronden</p>
-      <h2 class="slide-title">De <em>Opdrachtgever</em></h2>
-      <div class="gold-line"></div>
-      <div class="card">
-        <div class="card-title" style="color:var(--coral);">Nova Hart</div>
-        <div class="placeholder-text">[ Beschrijving Nova Hart als TikTok-influencer — haar publiek, uitstraling, bereik en wat haar bijzonder maakt als bruid ]</div>
-      </div>
-      <div class="card" style="margin-top:20px;">
-        <div class="card-title" style="color:var(--coral);">Finn Rivers</div>
-        <div class="placeholder-text">[ Korte beschrijving van Finn — relatie tot Nova en relevantie voor het evenement ]</div>
-      </div>
-    </div>
-    <div class="photo-col">
-      <img src="images/bride_forest.jpg" alt="Nova Hart">
-      <div class="photo-accent"></div>
-    </div>
+<!-- ═══════════════════════════════════════════
+  SLIDE 04 — STAKEHOLDERS (statement)
+═══════════════════════════════════════════ -->
+<section class="slide slide-green" data-slide="4">
+  <p class="eyebrow reveal d1">Stakeholders</p>
+  <div class="statement reveal d2" style="font-size:clamp(1.4rem,3.5vw,2.8rem); max-width:1100px;">
+    Nova & Finn &nbsp;·&nbsp; Inner circle &nbsp;·&nbsp; 600 avondgasten<br>
+    <em>Fans · Gemeente · Beveiliging · Locatie-eigenaar</em>
+  </div>
+  <div class="gold-line reveal d3"></div>
+  <p class="sub reveal d4">15 stakeholders geïdentificeerd &nbsp;·&nbsp; intern & extern</p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  SLIDE 05 — DOELSTELLING + DOELGROEPEN
+═══════════════════════════════════════════ -->
+<section class="slide" data-slide="5">
+  <div class="bg-photo" style="background-image:url('images/celebration_silhouettes.jpg')"></div>
+  <div class="bg-overlay-heavy"></div>
+  <p class="eyebrow reveal d1">Projectresultaat</p>
+  <div class="statement reveal d2">
+    Een <em>magische</em> bruiloft.<br>Natuur. Ceremonie. Feest.
+  </div>
+  <div class="gold-line reveal d3"></div>
+  <div class="stat-wrap reveal d4">
+    <div class="stat"><div class="stat-num">200</div><div class="stat-label">Daggasten</div></div>
+    <div class="stat"><div class="stat-num">600</div><div class="stat-label">Avondgasten</div></div>
+    <div class="stat"><div class="stat-num coral">100</div><div class="stat-label">Fans via loting</div></div>
+    <div class="stat"><div class="stat-num">70</div><div class="stat-label">Overnachters</div></div>
   </div>
 </section>
 
-<!-- ══ SLIDE 3: OPDRACHTNEMER ══ -->
-<section class="slide slide-mid" id="opdrachtnemer" data-slide="3">
-  <span class="section-num">1.2</span>
-  <div class="content-grid reveal">
-    <div class="photo-col">
-      <img src="images/dinner_table.jpg" alt="NextLevel Events">
-      <div class="photo-accent"></div>
-    </div>
-    <div>
-      <p class="section-label">Blok 1 · Achtergronden</p>
-      <h2 class="slide-title">De <em>Opdrachtnemer</em></h2>
-      <div class="gold-line"></div>
-      <div class="card">
-        <div class="card-title" style="color:var(--coral);">NextLevel Events</div>
-        <div class="placeholder-text">[ Beschrijving van NextLevel als eventbureau — visie, werkwijze, wat jullie onderscheidt ]</div>
-      </div>
-      <div class="card" style="margin-top:20px;">
-        <div class="card-title" style="color:var(--coral);">Onze kracht</div>
-        <ul class="check-list">
-          <li><span class="placeholder-text" style="border:none; padding:0; margin:0;">[ Competentie 1 ]</span></li>
-          <li><span class="placeholder-text" style="border:none; padding:0; margin:0;">[ Competentie 2 ]</span></li>
-          <li><span class="placeholder-text" style="border:none; padding:0; margin:0;">[ Competentie 3 ]</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SLIDE 4: AANLEIDING & OPDRACHTFORMULERING ══ -->
-<section class="slide slide-dark" id="aanleiding" data-slide="4">
-  <span class="section-num" style="color:rgba(198,167,94,0.1);">1.3</span>
-  <div class="content-grid reveal" style="max-width:1200px;">
-    <div>
-      <p class="section-label">Blok 1 · Achtergronden</p>
-      <h2 class="slide-title">Aanleiding <em>& Opdracht</em></h2>
-      <div class="gold-line"></div>
-      <div class="card">
-        <div class="card-title">1.3 Aanleiding project</div>
-        <div class="placeholder-text">[ Waarom wordt dit evenement georganiseerd? Wat is de aanleiding dat Nova Hart NextLevel heeft ingeschakeld? ]</div>
-      </div>
-    </div>
-    <div>
-      <div class="card" style="margin-top: 56px;">
-        <div class="card-title">1.4 Opdrachtformulering</div>
-        <div class="placeholder-text">[ NextLevel Events wordt gevraagd om... op datum... voor... binnen een budget van €150.000 ]</div>
-      </div>
-      <div class="card" style="margin-top:20px; background: rgba(198,167,94,0.06); border-color: rgba(198,167,94,0.25);">
-        <div class="card-title" style="color:var(--gold-light);">In het kort</div>
-        <ul class="check-list">
-          <li>Budget: €150.000 all-in (excl. locatiekosten)</li>
-          <li>200 daggasten · 600 avondgasten · 70 overnachters</li>
-          <li>100 fans via loting</li>
-          <li>Locatie: natuur (bos/weiland) · alles op één plek</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SLIDE 5: STAKEHOLDERS ══ -->
-<section class="slide slide-light" id="stakeholders" data-slide="5">
-  <span class="section-num">1.5</span>
-  <div style="max-width:1200px; width:100%;">
-    <div class="reveal" style="text-align:center; margin-bottom:48px;">
-      <p class="section-label">Blok 1 · Achtergronden</p>
-      <h2 class="slide-title">Inven<em>tarisatie Stakeholders</em></h2>
-      <div class="gold-line center"></div>
-    </div>
-    <div class="content-grid-3 reveal reveal-delay-1">
-      <div class="card">
-        <div class="card-icon">👰</div>
-        <div class="card-title">Nova Hart</div>
-        <div class="card-body">Opdrachtgever · Bruid</div>
-        <div class="placeholder-text">[ Belang & invloed ]</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">🤵</div>
-        <div class="card-title">Finn Rivers</div>
-        <div class="card-body">Bruidegom</div>
-        <div class="placeholder-text">[ Belang & invloed ]</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">👵</div>
-        <div class="card-title">Oma</div>
-        <div class="card-body">Financier locatiekosten</div>
-        <div class="placeholder-text">[ Belang & invloed ]</div>
-      </div>
-    </div>
-    <div class="content-grid-3 reveal reveal-delay-2" style="margin-top:24px;">
-      <div class="card">
-        <div class="card-icon">🎉</div>
-        <div class="card-title">Fans (100 via loting)</div>
-        <div class="card-body">Avondgasten · bijzondere doelgroep</div>
-        <div class="placeholder-text">[ Belang & invloed ]</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">🏛️</div>
-        <div class="card-title">[ Stakeholder 5 ]</div>
-        <div class="placeholder-text">[ Naam — Rol — Belang ]</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">📦</div>
-        <div class="card-title">[ Stakeholder 6 ]</div>
-        <div class="placeholder-text">[ Naam — Rol — Belang ]</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SLIDE 6: BLOK 2 OPENER ══ -->
-<section class="slide slide-dark" id="blok2" data-slide="6" style="text-align:center; flex-direction:column;">
-  <div class="blok-header reveal">
-    <span class="blok-number">02</span>
-    <h2 class="blok-title">Project<em style="color:var(--gold-light); font-style:italic;">resultaat</em></h2>
-    <div class="gold-line center"></div>
-    <p style="font-size:0.75rem; letter-spacing:0.4em; text-transform:uppercase; color:rgba(247,243,239,0.5);">Doelstelling · Doelgroep · Locatie · Budget</p>
-  </div>
-  <div class="content-grid-3 reveal reveal-delay-2" style="margin-top:20px;">
-    <div class="card" style="text-align:center;">
-      <div class="card-icon">🎯</div>
-      <div class="card-title">Doelstelling</div>
-      <div class="card-body">Wat willen we bereiken?</div>
-    </div>
-    <div class="card" style="text-align:center;">
-      <div class="card-icon">📍</div>
-      <div class="card-title">Locatie</div>
-      <div class="card-body">Natuur · bos · weiland</div>
-    </div>
-    <div class="card" style="text-align:center;">
-      <div class="card-icon">💰</div>
-      <div class="card-title">Budget</div>
-      <div class="card-body">€150.000 all-in</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SLIDE 7: DOELSTELLING + RESULTAAT + DOELGROEP ══ -->
-<section class="slide slide-mid" id="doelstelling" data-slide="7">
-  <span class="section-num">2.1</span>
-  <div class="content-grid reveal" style="max-width:1200px;">
-    <div class="photo-col">
-      <img src="images/couple_closeup.jpg" alt="Nova en Finn">
-      <div class="photo-accent"></div>
-    </div>
-    <div>
-      <p class="section-label">Blok 2 · Projectresultaat</p>
-      <h2 class="slide-title">Doel<em>stelling & Resultaat</em></h2>
-      <div class="gold-line"></div>
-      <div class="card">
-        <div class="card-title" style="color:var(--coral);">2.1 Doelstelling</div>
-        <div class="placeholder-text">[ SMART-doelstelling: wat, voor wie, wanneer, meetbaar ]</div>
-      </div>
-      <div class="card" style="margin-top:16px;">
-        <div class="card-title" style="color:var(--coral);">2.2 Resultaat</div>
-        <div class="placeholder-text">[ Concreet eindresultaat — wat wordt er opgeleverd? ]</div>
-      </div>
-      <div class="card" style="margin-top:16px;">
-        <div class="card-title" style="color:var(--coral);">2.3 Doelgroep</div>
-        <ul class="check-list">
-          <li>200 daggasten — familie & vrienden</li>
-          <li>600 avondgasten — incl. 100 fans via loting</li>
-          <li>70 overnachters op de locatie</li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Aanvullende doelgroepomschrijving ]</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SLIDE 8: LOCATIES ══ -->
-<section class="slide slide-dark" id="locaties" data-slide="8">
-  <span class="section-num" style="color:rgba(198,167,94,0.1);">2.4</span>
-  <div style="max-width:1200px; width:100%;">
-    <div class="reveal" style="text-align:center; margin-bottom:48px;">
-      <p class="section-label">Blok 2 · Projectresultaat</p>
-      <h2 class="slide-title">Inventarisatie <em>Locaties</em></h2>
-      <div class="gold-line center"></div>
-      <p style="font-size:0.85rem; color:rgba(247,243,239,0.6); max-width:600px; margin:0 auto;">Bos of weiland · alles op één locatie · overnachting voor 70 gasten</p>
-    </div>
-    <div class="content-grid-3 reveal reveal-delay-1">
-      <div class="card">
-        <div class="card-icon">🌲</div>
-        <div class="card-title">Locatieoptie 1</div>
-        <div class="placeholder-text">[ Naam — Type — Capaciteit ]</div>
-        <ul class="check-list" style="margin-top:12px;">
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">Voordeel 1</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">Nadeel 1</span></li>
-        </ul>
-      </div>
-      <div class="card" style="border-color:rgba(198,167,94,0.5); background:rgba(198,167,94,0.06);">
-        <div class="card-icon">⭐</div>
-        <div class="card-title" style="color:var(--gold-light);">Locatieoptie 2 · Voorkeur</div>
-        <div class="placeholder-text">[ Naam — Type — Capaciteit ]</div>
-        <ul class="check-list" style="margin-top:12px;">
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">Voordeel 1</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">Voordeel 2</span></li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">🌿</div>
-        <div class="card-title">Locatieoptie 3</div>
-        <div class="placeholder-text">[ Naam — Type — Capaciteit ]</div>
-        <ul class="check-list" style="margin-top:12px;">
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">Voordeel 1</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">Nadeel 1</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SLIDE 9: MENSEN & MIDDELEN ══ -->
-<section class="slide slide-light" id="mensen" data-slide="9">
-  <span class="section-num">2.5</span>
-  <div class="content-grid reveal" style="max-width:1200px;">
-    <div>
-      <p class="section-label">Blok 2 · Projectresultaat</p>
-      <h2 class="slide-title">Mensen <em>& Middelen</em></h2>
-      <div class="gold-line"></div>
-      <div class="card">
-        <div class="card-title" style="color:var(--coral);">👥 Mensen / Personeel</div>
-        <ul class="check-list">
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Functie — Aantal — Kosten ]</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Functie — Aantal — Kosten ]</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Functie — Aantal — Kosten ]</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Functie — Aantal — Kosten ]</span></li>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <div class="card" style="margin-top:56px;">
-        <div class="card-title" style="color:var(--coral);">📦 Middelen / Materiaal</div>
-        <ul class="check-list">
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Item — Hoeveelheid — Kosten ]</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Item — Hoeveelheid — Kosten ]</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Item — Hoeveelheid — Kosten ]</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Item — Hoeveelheid — Kosten ]</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SLIDE 10: BUDGET ══ -->
-<section class="slide slide-dark" id="budget" data-slide="10">
-  <span class="section-num" style="color:rgba(198,167,94,0.1);">2.6</span>
-  <div style="max-width:1100px; width:100%;">
-    <div class="reveal" style="margin-bottom:40px;">
-      <p class="section-label">Blok 2 · Projectresultaat</p>
-      <h2 class="slide-title">Raming <em>Kosten & Baten</em></h2>
-      <div class="gold-line"></div>
-    </div>
-    <div class="content-grid reveal reveal-delay-1">
+<!-- ═══════════════════════════════════════════
+  SLIDE 06 — LOCATIE
+═══════════════════════════════════════════ -->
+<section class="slide" data-slide="6" style="justify-content:flex-start; padding-top:80px;">
+  <div class="bg-photo" style="background-image:url('images/location_venue.jpg')"></div>
+  <div class="bg-overlay-heavy"></div>
+  <p class="eyebrow reveal d1" style="margin-bottom:32px; position:relative; z-index:2;">Locatie</p>
+  <div class="location-bar reveal d2" style="width:100%; position:relative; z-index:2;">
+    <div class="loc-item">
       <div>
-        <div class="budget-highlight">
-          <div>
-            <div class="budget-label">Beschikbaar budget</div>
-            <div class="budget-num">€150.000</div>
-          </div>
-          <div style="font-size:2rem;">💰</div>
-        </div>
-        <div class="budget-highlight flag-red" style="margin-top:16px;">
-          <div>
-            <div class="budget-label">Huidige raming (bandbreedte)</div>
-            <div class="budget-num">€127k – €221k</div>
-          </div>
-          <div style="font-size:2rem;">⚠️</div>
-        </div>
-        <div class="card" style="margin-top:16px; border-color:rgba(209,73,91,0.3); background:rgba(209,73,91,0.06);">
-          <div class="card-title" style="color:var(--dahlia);">🚩 Rode vlag</div>
-          <div class="card-body">De maximale raming overschrijdt het budget met ~€71.000. Verduidelijkingsvragen zijn gesteld aan opdrachtgever.</div>
-        </div>
+        <span class="loc-tag">Ceremonie & foto</span>
+        <div class="loc-name">Arboretum<br>Belmonte</div>
       </div>
+    </div>
+    <div class="loc-item featured">
       <div>
-        <div class="card">
-          <div class="card-title">Kostenposten (globaal)</div>
-          <ul class="check-list">
-            <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Categorie — €... ]</span></li>
-            <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Categorie — €... ]</span></li>
-            <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Categorie — €... ]</span></li>
-            <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Categorie — €... ]</span></li>
-          </ul>
-        </div>
-        <div class="card" style="margin-top:16px;">
-          <div class="card-title">Baten / opbrengsten</div>
-          <div class="placeholder-text">[ Bijv. sponsoring, media-aandacht, merchandise ]</div>
-        </div>
+        <span class="loc-tag">⭐ Voorkeur · alles op één plek</span>
+        <div class="loc-name" style="font-size:1.8rem;">Fletcher Hotel<br>De Wageningse Berg</div>
       </div>
+    </div>
+    <div class="loc-item">
+      <div>
+        <span class="loc-tag">603m² · bosrijke omgeving</span>
+        <div class="loc-name">Wageningen</div>
+      </div>
+    </div>
+  </div>
+  <p class="sub reveal d3" style="margin-top:24px; position:relative; z-index:2;">Ceremonie · diner · feest · 70 overnachtingen · alles op één locatie</p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  SLIDE 07 — BUDGET
+═══════════════════════════════════════════ -->
+<section class="slide slide-dark" data-slide="7">
+  <p class="eyebrow reveal d1">Kosten & baten</p>
+  <div class="reveal d2" style="width:100%; max-width:700px;">
+    <div class="budget-row">
+      <span class="budget-cat">Mensen</span>
+      <span class="budget-amt">€44.532</span>
+    </div>
+    <div class="budget-row">
+      <span class="budget-cat">Middelen</span>
+      <span class="budget-amt">€77.820</span>
+    </div>
+    <div class="budget-row">
+      <span class="budget-cat">Onvoorzien</span>
+      <span class="budget-amt">€15.000</span>
+    </div>
+    <div class="budget-row" style="border-top: 1px solid rgba(198,167,94,0.3); margin-top:8px; padding-top:32px;">
+      <span class="budget-cat" style="color:#C6A75E;">Totaal</span>
+      <span class="budget-amt gold">€122.352</span>
+    </div>
+    <div class="budget-row">
+      <span class="budget-cat" style="color:#6fcf97;">Restbudget</span>
+      <span class="budget-amt green">€12.648 ✓</span>
     </div>
   </div>
 </section>
 
-<!-- ══ SLIDE 11: BLOK 3 OPENER ══ -->
-<section class="slide slide-dark" id="blok3" data-slide="11" style="text-align:center; flex-direction:column;">
-  <div class="blok-header reveal">
-    <span class="blok-number">03</span>
-    <h2 class="blok-title">Project<em style="color:var(--gold-light); font-style:italic;">activiteiten</em></h2>
-    <div class="gold-line center"></div>
-    <p style="font-size:0.75rem; letter-spacing:0.4em; text-transform:uppercase; color:rgba(247,243,239,0.5);">Aanpak · Risico's · Activiteiten · Planning</p>
+<!-- ═══════════════════════════════════════════
+  SLIDE 08 — AANPAK + RISICO
+═══════════════════════════════════════════ -->
+<section class="slide" data-slide="8">
+  <div class="bg-photo" style="background-image:url('images/production_setup.jpg')"></div>
+  <div class="bg-overlay-heavy"></div>
+  <p class="eyebrow reveal d1" style="position:relative;z-index:2;">Projectactiviteiten</p>
+  <div class="grid3 reveal d2" style="margin-top:0; width:100%; position:relative; z-index:2;">
+    <div class="grid3-item">
+      <div class="grid3-num">01</div>
+      <div class="grid3-label">Voorbereiding</div>
+      <div class="grid3-sub">Concept · locatie<br>leveranciers · veiligheid</div>
+    </div>
+    <div class="grid3-item" style="border-top: 2px solid #C6A75E;">
+      <div class="grid3-num">02</div>
+      <div class="grid3-label">Uitvoering</div>
+      <div class="grid3-sub">14:00 — 01:00<br>volledige dagcoördinatie</div>
+    </div>
+    <div class="grid3-item">
+      <div class="grid3-num">03</div>
+      <div class="grid3-label">Nazorg</div>
+      <div class="grid3-sub">Afbouw · afrekening<br>evaluatie Nova</div>
+    </div>
   </div>
-  <div class="content-grid-3 reveal reveal-delay-2" style="margin-top:20px;">
-    <div class="card" style="text-align:center;">
-      <div class="card-icon">🗺️</div>
-      <div class="card-title">Aanpak</div>
-      <div class="card-body">Fasering & projectmethode</div>
+  <div class="gold-line reveal d3" style="position:relative;z-index:2;"></div>
+  <p class="sub reveal d4" style="position:relative;z-index:2;">Risicoscore <span style="color:#C6A75E;">42%</span> &nbsp;·&nbsp; uitvoerbaar &nbsp;·&nbsp; back-up tent aanwezig &nbsp;·&nbsp; buffer €12.648</p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  SLIDE 09 — WAAROM NEXTLEVEL (USP)
+═══════════════════════════════════════════ -->
+<section class="slide" data-slide="9">
+  <div class="bg-photo" style="background-image:url('images/bride_forest.jpg')"></div>
+  <div class="bg-overlay-heavy"></div>
+  <p class="eyebrow reveal d1" style="position:relative;z-index:2;">Waarom NextLevel?</p>
+  <div class="usp-row">
+    <div class="usp-item reveal d2">
+      <span class="usp-icon">📱</span>
+      <div class="usp-title">Wij denken<br>als creators</div>
+      <div class="usp-body">Elk moment camera-ready</div>
     </div>
-    <div class="card" style="text-align:center;">
-      <div class="card-icon">⚡</div>
-      <div class="card-title">Risico's</div>
-      <div class="card-body">Inventarisatie & maatregelen</div>
+    <div class="usp-item reveal d3">
+      <span class="usp-icon">✦</span>
+      <div class="usp-title" style="color:#C6A75E;">100% maatwerk</div>
+      <div class="usp-body">Jullie verhaal · jullie stijl</div>
     </div>
-    <div class="card" style="text-align:center;">
-      <div class="card-icon">📅</div>
-      <div class="card-title">Planning</div>
-      <div class="card-body">Grenzen & tussenresultaten</div>
+    <div class="usp-item reveal d4">
+      <span class="usp-icon">🛡️</span>
+      <div class="usp-title">Wij zijn<br>de rust</div>
+      <div class="usp-body">Nova & Finn zijn bruid & bruidegom — niet projectmanager</div>
     </div>
   </div>
 </section>
 
-<!-- ══ SLIDE 12: AANPAK + RISICO'S ══ -->
-<section class="slide slide-light" id="aanpak" data-slide="12">
-  <span class="section-num">3.1</span>
-  <div class="content-grid reveal" style="max-width:1200px;">
-    <div>
-      <p class="section-label">Blok 3 · Projectactiviteiten</p>
-      <h2 class="slide-title">Aanpak <em>& Risico's</em></h2>
-      <div class="gold-line"></div>
-      <div class="card">
-        <div class="card-title" style="color:var(--coral);">3.1 Projectmatige aanpak</div>
-        <ul class="check-list">
-          <li><strong>Voorbereiding:</strong> <span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Fase 1 omschrijving ]</span></li>
-          <li><strong>Uitvoering:</strong> <span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Fase 2 omschrijving ]</span></li>
-          <li><strong>Nazorg:</strong> <span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Fase 3 omschrijving ]</span></li>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <div class="card" style="margin-top:56px;">
-        <div class="card-title" style="color:var(--coral);">3.2 Projectrisico's</div>
-        <ul class="check-list">
-          <li>🌧️ Slecht weer — buitenlocatie <span style="color:var(--dahlia); font-size:0.75rem;">[H/H]</span> — <span class="placeholder-text" style="border:none;padding:0;margin:0;">maatregel</span></li>
-          <li>💸 Budgetoverschrijding <span style="color:var(--dahlia); font-size:0.75rem;">[H/H]</span> — <span class="placeholder-text" style="border:none;padding:0;margin:0;">maatregel</span></li>
-          <li>👥 Veiligheid fans <span style="color:var(--peach); font-size:0.75rem;">[M/H]</span> — <span class="placeholder-text" style="border:none;padding:0;margin:0;">maatregel</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Risico 4 — Kans/Impact — Maatregel ]</span></li>
-        </ul>
-      </div>
-    </div>
+<!-- ═══════════════════════════════════════════
+  SLIDE 10 — VRAAG AAN NOVA
+═══════════════════════════════════════════ -->
+<section class="slide slide-dark" data-slide="10">
+  <p class="eyebrow reveal d1">Jouw beurt, Nova</p>
+  <div class="statement reveal d2">
+    Wat wil je dat mensen <em>voelen</em><br>als ze jouw bruiloft verlaten?
+  </div>
+  <div class="gold-line reveal d3"></div>
+  <div class="reveal d4" style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-top:8px;">
+    <span style="border:1px solid rgba(198,167,94,0.3); padding:12px 24px; font-size:0.8rem; letter-spacing:0.2em; color:rgba(247,243,239,0.5);">🥂 Feest & euforie</span>
+    <span style="border:1px solid rgba(198,167,94,0.3); padding:12px 24px; font-size:0.8rem; letter-spacing:0.2em; color:rgba(247,243,239,0.5);">💫 Sprookje & magie</span>
+    <span style="border:1px solid rgba(198,167,94,0.3); padding:12px 24px; font-size:0.8rem; letter-spacing:0.2em; color:rgba(247,243,239,0.5);">🌿 Rust & verbinding</span>
+    <span style="border:1px solid rgba(198,167,94,0.3); padding:12px 24px; font-size:0.8rem; letter-spacing:0.2em; color:rgba(247,243,239,0.5);">🔥 Onvergetelijk</span>
   </div>
 </section>
 
-<!-- ══ SLIDE 13: ACTIVITEITEN + GRENZEN ══ -->
-<section class="slide slide-mid" id="activiteiten" data-slide="13">
-  <span class="section-num">3.3</span>
-  <div class="content-grid reveal" style="max-width:1200px;">
-    <div>
-      <p class="section-label">Blok 3 · Projectactiviteiten</p>
-      <h2 class="slide-title">Activiteiten <em>& Grenzen</em></h2>
-      <div class="gold-line"></div>
-      <div class="card">
-        <div class="card-title" style="color:var(--coral);">3.3 Activiteiten</div>
-        <ul class="check-list">
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Activiteit 1 — Wie — Deadline ]</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Activiteit 2 — Wie — Deadline ]</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Activiteit 3 — Wie — Deadline ]</span></li>
-          <li><span class="placeholder-text" style="border:none;padding:0;margin:0;">[ Activiteit 4 — Wie — Deadline ]</span></li>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <div class="card" style="margin-top:56px;">
-        <div class="card-title" style="color:var(--coral);">3.4 Projectgrenzen</div>
-        <div style="margin-top:12px;">
-          <p style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--forest); margin-bottom:8px; font-weight:500;">✅ Binnen de opdracht</p>
-          <div class="placeholder-text">[ Wat doet NextLevel WEL? ]</div>
-        </div>
-        <div style="margin-top:16px;">
-          <p style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--dahlia); margin-bottom:8px; font-weight:500;">❌ Buiten de opdracht</p>
-          <div class="placeholder-text">[ Wat doet NextLevel NIET? ]</div>
-        </div>
-      </div>
-    </div>
+<!-- ═══════════════════════════════════════════
+  SLIDE 11 — AFSLUITING
+═══════════════════════════════════════════ -->
+<section class="slide" data-slide="11">
+  <div class="bg-photo" style="background-image:url('images/ceremony_lights.jpg')"></div>
+  <div class="bg-overlay-heavy"></div>
+  <div class="closing-text reveal d1">
+    Geef ons de <em>go.</em>
   </div>
-</section>
-
-<!-- ══ SLIDE 14: TUSSENRESULTATEN ══ -->
-<section class="slide slide-dark" id="planning" data-slide="14">
-  <span class="section-num" style="color:rgba(198,167,94,0.1);">3.5</span>
-  <div style="max-width:1000px; width:100%;">
-    <div class="reveal" style="text-align:center; margin-bottom:48px;">
-      <p class="section-label">Blok 3 · Projectactiviteiten</p>
-      <h2 class="slide-title">Tussen<em>resultaten & Planning</em></h2>
-      <div class="gold-line center"></div>
-    </div>
-    <div class="reveal reveal-delay-1" style="display:flex; flex-direction:column; gap:16px;">
-      <div class="card" style="display:flex; align-items:center; justify-content:space-between; padding:20px 28px;">
-        <div style="display:flex; align-items:center; gap:20px;">
-          <div style="width:36px; height:36px; border-radius:50%; background:var(--coral); display:flex;align-items:center;justify-content:center; font-size:0.75rem; font-weight:500; flex-shrink:0;">W4</div>
-          <div><div class="card-title" style="margin:0; font-size:1.1rem;">Pitch Projectvoorstel</div><div style="font-size:0.8rem; color:rgba(247,243,239,0.5);">Presentatie · Formatief</div></div>
-        </div>
-        <div style="font-size:0.75rem; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; border:1px solid rgba(198,167,94,0.3); padding:6px 16px; border-radius:2px;">Nu bezig ✦</div>
-      </div>
-      <div class="card" style="display:flex; align-items:center; justify-content:space-between; padding:20px 28px; opacity:0.7;">
-        <div style="display:flex; align-items:center; gap:20px;">
-          <div style="width:36px; height:36px; border-radius:50%; background:rgba(198,167,94,0.3); display:flex;align-items:center;justify-content:center; font-size:0.75rem; font-weight:500; flex-shrink:0;">W7</div>
-          <div><div class="card-title" style="margin:0; font-size:1.1rem;">Plan van Aanpak</div><div style="font-size:0.8rem; color:rgba(247,243,239,0.5);">Rapport · Formatief</div></div>
-        </div>
-        <div style="font-size:0.75rem; color:rgba(247,243,239,0.4); letter-spacing:0.2em; text-transform:uppercase;">Binnenkort</div>
-      </div>
-      <div class="card" style="display:flex; align-items:center; justify-content:space-between; padding:20px 28px; opacity:0.5;">
-        <div style="display:flex; align-items:center; gap:20px;">
-          <div style="width:36px; height:36px; border-radius:50%; background:rgba(198,167,94,0.2); display:flex;align-items:center;justify-content:center; font-size:0.75rem; font-weight:500; flex-shrink:0;">P4</div>
-          <div><div class="card-title" style="margin:0; font-size:1.1rem;">Ontwerp · Draaiboek · Productieplan</div><div style="font-size:0.8rem; color:rgba(247,243,239,0.4);">Periode 4 · Rapport & Infographic</div></div>
-        </div>
-        <div style="font-size:0.75rem; color:rgba(247,243,239,0.3); letter-spacing:0.2em; text-transform:uppercase;">Later</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SLIDE 15: WAAROM NEXTLEVEL ══ -->
-<section class="slide slide-light" id="waarom" data-slide="15" style="flex-direction:column; text-align:center;">
-  <div class="reveal" style="margin-bottom:48px;">
-    <p class="section-label">De overtuiging</p>
-    <h2 class="slide-title" style="color:var(--forest);">Waarom <em>NextLevel?</em></h2>
-    <div class="gold-line center"></div>
-  </div>
-  <div class="content-grid-3 reveal reveal-delay-1" style="margin-bottom:48px;">
-    <div class="card">
-      <div class="card-icon">🎯</div>
-      <div class="card-title">Wij begrijpen Nova</div>
-      <div class="card-body">Als TikTok-influencer heeft Nova een publiek dat meekijkt. Wij begrijpen dat dit evenement méér is dan een bruiloft — het is een beleving die gedeeld wordt.</div>
-    </div>
-    <div class="card" style="background: linear-gradient(135deg, rgba(231,111,81,0.08), rgba(209,73,91,0.08)); border-color:rgba(231,111,81,0.3);">
-      <div class="card-icon">✨</div>
-      <div class="card-title" style="color:var(--coral);">Wij leveren kwaliteit</div>
-      <div class="card-body">Van concept tot uitvoering bewaken wij elk detail — van de eerste fairy light tot het laatste glas. NextLevel staat voor onvergetelijke momenten.</div>
-    </div>
-    <div class="card">
-      <div class="card-icon">🤝</div>
-      <div class="card-title">Wij ontzorgen volledig</div>
-      <div class="card-body">Nova en Finn verdienen het om die dag volledig aanwezig te zijn als bruid en bruidegom — niet als projectmanager. Dat is onze taak.</div>
-    </div>
-  </div>
-  <div class="conviction-banner reveal reveal-delay-3">
-    <p class="conviction-quote">"Jouw dag. Onze missie. Samen onvergetelijk."</p>
-    <p class="conviction-sub">NextLevel Events · Bruiloft Nova Hart & Finn Rivers · 14 Juni 2026</p>
-  </div>
-</section>
-
-<!-- ══ SLIDE 16: CLOSING ══ -->
-<section class="slide" id="closing" data-slide="16" style="text-align:center;">
-  <div style="position:relative; z-index:2;">
-    <p class="hero-eyebrow" style="animation: fadeUp 1s 0.2s both;">NextLevel Events</p>
-    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,8vw,7rem); font-weight:300; color:var(--ivory); line-height:1; animation: fadeUp 1s 0.4s both;">Vragen?</h2>
-    <div class="hero-divider"></div>
-    <p style="font-size:0.85rem; color:rgba(247,243,239,0.6); letter-spacing:0.2em; animation: fadeUp 1s 0.6s both;">Wij horen graag jullie feedback</p>
-    <div style="margin-top:40px; animation: fadeUp 1s 0.8s both;">
-      <img src="images/bouquet.jpg" alt="bouquet" style="width:160px; height:160px; object-fit:cover; border-radius:50%; border:2px solid rgba(198,167,94,0.4); display:inline-block;">
-    </div>
-  </div>
+  <div class="gold-line reveal d2"></div>
+  <p class="sub reveal d3">NextLevel Events &nbsp;·&nbsp; Nova & Finn &nbsp;·&nbsp; 14 Juni 2026</p>
+  <p class="sub reveal d4" style="margin-top:12px; font-size:0.55rem;">Vragen?</p>
 </section>
 
 <script>
 const slides = document.querySelectorAll('[data-slide]');
-const dots = document.querySelectorAll('.dot');
+const nav = document.getElementById('nav');
 const progress = document.getElementById('progress');
 
-// Scroll progress
+// Build dots
+slides.forEach((s, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => slides[i].scrollIntoView({ behavior: 'smooth' });
+  nav.appendChild(d);
+});
+const dots = document.querySelectorAll('.dot');
+
+// Progress
 window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  const total = document.body.scrollHeight - window.innerHeight;
-  progress.style.width = (scrolled / total * 100) + '%';
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  progress.style.width = pct + '%';
 });
 
-// Reveal on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+// Reveal + active dot
+const ro = new IntersectionObserver(e => {
+  e.forEach(en => {
+    if (en.isIntersecting) {
+      en.target.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+      const i = en.target.dataset.slide;
+      dots.forEach((d, j) => d.classList.toggle('active', j == i));
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.4 });
+slides.forEach(s => ro.observe(s));
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Active dot
-const slideObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const idx = entry.target.dataset.slide;
-      dots.forEach((d,i) => d.classList.toggle('active', i == idx));
-    }
-  });
-}, { threshold: 0.5 });
-
-slides.forEach(s => slideObserver.observe(s));
-
-// Scroll to slide
-function scrollToSlide(idx) {
-  slides[idx]?.scrollIntoView({ behavior: 'smooth' });
-}
-
-// Keyboard navigation
+// Keyboard
 document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-    e.preventDefault();
-    const active = [...dots].findIndex(d => d.classList.contains('active'));
-    if (active < slides.length - 1) scrollToSlide(active + 1);
+  const cur = [...dots].findIndex(d => d.classList.contains('active'));
+  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && cur < slides.length - 1) {
+    e.preventDefault(); slides[cur + 1].scrollIntoView({ behavior: 'smooth' });
   }
-  if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-    e.preventDefault();
-    const active = [...dots].findIndex(d => d.classList.contains('active'));
-    if (active > 0) scrollToSlide(active - 1);
+  if ((e.key === 'ArrowUp' || e.key === 'PageUp') && cur > 0) {
+    e.preventDefault(); slides[cur - 1].scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+// WOW
+function triggerWow() {
+  const w = document.getElementById('wow');
+  w.classList.add('on');
+  // Fade in video
+  setTimeout(() => {
+    document.getElementById('wowVideo').style.opacity = '0.35';
+    document.getElementById('wowVideo').style.pointerEvents = 'none';
+  }, 300);
+  setTimeout(() => document.getElementById('wowBig').classList.add('in'), 400);
+  setTimeout(() => document.getElementById('wowClose').classList.add('in'), 1100);
+  confetti();
+}
+function closeWow() {
+  const w = document.getElementById('wow');
+  w.style.opacity = '0';
+  setTimeout(() => {
+    w.classList.remove('on'); w.style.opacity = '';
+    document.getElementById('wowBig').classList.remove('in');
+    document.getElementById('wowClose').classList.remove('in');
+  }, 400);
+  slides[1].scrollIntoView({ behavior: 'smooth' });
+}
+function confetti() {
+  const c = ['#E76F51','#C6A75E','#D1495B','#F4A261','#F2C6C2'];
+  for (let i = 0; i < 60; i++) {
+    setTimeout(() => {
+      const p = document.createElement('div');
+      p.className = 'cp';
+      p.style.cssText = `left:${Math.random()*100}vw;width:${Math.random()*8+4}px;height:${Math.random()*8+4}px;background:${c[~~(Math.random()*c.length)]};animation-duration:${Math.random()*2+2}s;animation-delay:${Math.random()*0.5}s`;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 4000);
+    }, i * 25);
+  }
+}
 </script>
 </body>
 </html>
