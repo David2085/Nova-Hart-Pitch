@@ -1258,8 +1258,8 @@
     <div class="s16-bg"></div>
     <div class="tiktok-phone" style="overflow:hidden; background:#000; position:relative;" id="tt-phone">
       <iframe id="tt-iframe"
-        src="https://www.youtube.com/embed/vhEww5m1ifQ?autoplay=1&mute=1&loop=1&playlist=vhEww5m1ifQ&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&enablejsapi=1"
-        style="position:absolute; top:50%; left:50%; width:300%; height:300%; transform:translate(-50%,-42%); border:none; pointer-events:none;"
+        src="https://www.youtube.com/embed/vhEww5m1ifQ?autoplay=0&mute=0&loop=1&playlist=vhEww5m1ifQ&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&enablejsapi=1"
+        style="position:absolute; top:50%; left:50%; width:170%; height:170%; transform:translate(-50%,-50%); border:none; pointer-events:none;"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; muted"
         allowfullscreen title="Verrassingselement Nova & Finn"></iframe>
 
@@ -1295,9 +1295,8 @@
     function playWithSound() {
       const overlay = document.getElementById('tt-overlay');
       const iframe = document.getElementById('tt-iframe');
-      // Reload iframe without mute=1 so sound plays after user gesture
-      const src = iframe.src.replace('mute=1', 'mute=0').replace('autoplay=1', 'autoplay=1');
-      iframe.src = src;
+      // Reload with autoplay and sound after user gesture
+      iframe.src = 'https://www.youtube.com/embed/vhEww5m1ifQ?autoplay=1&mute=0&loop=1&playlist=vhEww5m1ifQ&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1';
       iframe.style.pointerEvents = 'auto';
       overlay.style.opacity = '0';
       setTimeout(() => overlay.style.display = 'none', 400);
